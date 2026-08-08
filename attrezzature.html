@@ -2,35 +2,208 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=yes">
   <meta name="theme-color" content="#061b3a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Attrezzature | Tech Farm Sarnico</title>
   <style>
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      min-height: 100%;
-      background: #061b3a;
+    :root{
+      --blue:#061b3a;
+      --blue2:#0b3263;
+      --lime:#c9df21;
+      --white:#ffffff;
+      --soft:#eef4f8;
+      --text:#0c2340;
     }
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      overflow-x: hidden;
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--soft);
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      -webkit-text-size-adjust:100%;
     }
-    img {
-      display: block;
-      width: 100%;
-      height: auto;
-      max-width: 1536px;
-      margin: 0 auto;
+    .hero{
+      min-height:100dvh;
+      padding:max(22px,env(safe-area-inset-top)) 18px max(28px,env(safe-area-inset-bottom));
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      background:linear-gradient(180deg,var(--blue),var(--blue2));
+      color:white;
+    }
+    .kicker{
+      font-weight:800;
+      letter-spacing:.08em;
+      color:var(--lime);
+      font-size:.92rem;
+    }
+    h1{
+      margin:8px 0 4px;
+      font-size:clamp(2.2rem,11vw,4rem);
+      line-height:.96;
+      letter-spacing:-.04em;
+    }
+    .sub{
+      margin:10px 0 18px;
+      font-size:1.05rem;
+      line-height:1.35;
+      opacity:.95;
+    }
+    .budget{
+      background:white;
+      color:var(--blue);
+      border-radius:22px;
+      padding:20px;
+      margin:12px 0 18px;
+      box-shadow:0 18px 50px rgba(0,0,0,.18);
+    }
+    .budget small{display:block;font-weight:800;opacity:.65;text-transform:uppercase;letter-spacing:.06em}
+    .budget strong{display:block;font-size:2.7rem;line-height:1;margin-top:6px}
+    .hint{
+      margin-top:8px;
+      font-size:.92rem;
+      opacity:.86;
+    }
+    .section{
+      padding:24px 16px;
+      max-width:720px;
+      margin:0 auto;
+    }
+    .section h2{
+      margin:0 0 14px;
+      font-size:1.55rem;
+      color:var(--blue);
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+    }
+    .card{
+      background:white;
+      border-radius:18px;
+      padding:17px;
+      box-shadow:0 6px 20px rgba(6,27,58,.08);
+      border-left:6px solid var(--lime);
+    }
+    .card h3{margin:0 0 7px;font-size:1.1rem}
+    .card p{margin:0;line-height:1.42;font-size:.96rem}
+    .price{
+      margin-top:10px!important;
+      font-size:1.15rem!important;
+      font-weight:800;
+      color:var(--blue);
+    }
+    .full-poster{
+      padding:18px 12px 28px;
+      background:#061b3a;
+    }
+    .full-poster h2{
+      color:white;
+      margin:0 8px 14px;
+      font-size:1.25rem;
+    }
+    .full-poster img{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:12px;
+      background:white;
+    }
+    .back{
+      position:fixed;
+      z-index:20;
+      top:max(12px,env(safe-area-inset-top));
+      left:12px;
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:rgba(255,255,255,.92);
+      color:var(--blue);
+      text-decoration:none;
+      font-size:1.3rem;
+      font-weight:900;
+      box-shadow:0 5px 18px rgba(0,0,0,.16);
+    }
+    @media(min-width:700px){
+      .grid{grid-template-columns:1fr 1fr}
+      .section{padding:34px 22px}
     }
   </style>
 </head>
 <body>
-  <img src="attrezzature-tech-farm.png"
-       alt="Elenco attrezzature Tech Farm Sarnico">
+  <a class="back" href="index.html" aria-label="Torna alla locandina">‹</a>
+
+  <section class="hero">
+    <div class="kicker">TECH FARM SARNICO 1.0</div>
+    <h1>Attrezzature</h1>
+    <p class="sub">Dotazione iniziale per un laboratorio tecnologico dedicato a 10–15 ragazzi.</p>
+    <div class="budget">
+      <small>Obiettivo iniziale</small>
+      <strong>€ 12.200</strong>
+      <div class="hint">Le aziende possono contribuire con fondi, attrezzature, materiali o competenze.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Le aree del laboratorio</h2>
+    <div class="grid">
+      <article class="card">
+        <h3>💻 Digital & AI</h3>
+        <p>6 notebook, accessori e periferiche per coding, AI, progettazione e sviluppo.</p>
+        <p class="price">€ 4.800</p>
+      </article>
+      <article class="card">
+        <h3>🤖 Robotica & Coding</h3>
+        <p>Robot educativi, Arduino, micro:bit, sensori e componenti programmabili.</p>
+        <p class="price">€ 1.710</p>
+      </article>
+      <article class="card">
+        <h3>🖨️ 3D Maker Lab</h3>
+        <p>Stampanti 3D, filamenti, utensili di finitura e materiali di prototipazione.</p>
+        <p class="price">€ 860</p>
+      </article>
+      <article class="card">
+        <h3>⚡ Elettronica Lab</h3>
+        <p>Stazioni saldanti, alimentatore da banco, multimetri e componentistica.</p>
+        <p class="price">€ 580</p>
+      </article>
+      <article class="card">
+        <h3>🎥 Digital Media</h3>
+        <p>Attrezzature video, audio e comunicazione per raccontare i progetti dei ragazzi.</p>
+        <p class="price">€ 1.000</p>
+      </article>
+      <article class="card">
+        <h3>🥽 Tecnologie immersive</h3>
+        <p>Dotazione per sperimentare realtà virtuale e nuove modalità di apprendimento.</p>
+        <p class="price">€ 1.000</p>
+      </article>
+      <article class="card">
+        <h3>🧰 Maker Workshop</h3>
+        <p>Strumenti e materiali di base per costruire, assemblare e prototipare.</p>
+        <p class="price">€ 750</p>
+      </article>
+      <article class="card">
+        <h3>📺 Presentazione</h3>
+        <p>Dotazione per mostrare lavori, demo e presentazioni durante gli incontri.</p>
+        <p class="price">€ 750</p>
+      </article>
+      <article class="card">
+        <h3>📦 Consumabili iniziali</h3>
+        <p>Materiali di consumo, ricambi e minuteria per avviare i primi laboratori.</p>
+        <p class="price">€ 750</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="full-poster">
+    <h2>Presentazione completa delle attrezzature</h2>
+    <img src="attrezzature-tech-farm.png" alt="Elenco completo attrezzature Tech Farm Sarnico">
+  </section>
 </body>
 </html>

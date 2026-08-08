@@ -1,16 +1,13 @@
-# Tech Farm Sarnico
+# Tech Farm Sarnico — versione mobile
 
-Versione 2 del minisito.
+Sostituire nella root del repository:
+- index.html
+- attrezzature.html
 
-## File da caricare nella root del repository
-- `index.html`
-- `attrezzature.html`
-- `locandina-tech-farm.png`
-- `attrezzature-tech-farm.png`
+Lasciare anche:
+- locandina-tech-farm.png
+- attrezzature-tech-farm.png
 
-Il QR presente nella locandina punta a:
-
-https://andreavignoni82-spec.github.io/tech-farm-sarnico/attrezzature.html
-
-La home mostra soltanto la locandina a tutta larghezza.
-Toccando/cliccando la locandina si apre `attrezzature.html` in una nuova pagina.
+La home è ottimizzata per smartphone verticale e usa l'intero viewport.
+La pagina attrezzature è mobile-first: prima mostra una versione leggibile a schede,
+poi conserva in fondo la locandina completa originale.

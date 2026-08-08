@@ -2,49 +2,45 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=yes">
   <meta name="theme-color" content="#061b3a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Tech Farm Sarnico</title>
   <style>
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      min-height: 100%;
-      background: #061b3a;
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      width:100%;
+      min-height:100%;
+      background:#061b3a;
     }
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      overflow-x: hidden;
+    body{
+      min-height:100dvh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow:hidden;
     }
-    a.poster-link {
-      display: block;
-      width: 100vw;
-      max-width: 100%;
-      text-decoration: none;
-      line-height: 0;
+    .poster-link{
+      display:flex;
+      width:100vw;
+      height:100dvh;
+      justify-content:center;
+      align-items:center;
+      text-decoration:none;
+      background:#061b3a;
     }
-    img.poster {
-      display: block;
-      width: 100%;
-      height: auto;
-      margin: 0;
-      border: 0;
+    .poster{
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:center center;
+      border:0;
     }
-    @media (min-width: 900px) {
-      body {
-        background: #061b3a;
-      }
-      a.poster-link {
-        width: auto;
-        max-width: min(100vw, 1024px);
-      }
-      img.poster {
-        width: 100%;
-      }
+    @supports not (height:100dvh){
+      body,.poster-link{min-height:100vh;height:100vh}
     }
   </style>
 </head>
@@ -53,10 +49,10 @@
      href="attrezzature.html"
      target="_blank"
      rel="noopener"
-     aria-label="Apri l'elenco attrezzature Tech Farm">
+     aria-label="Apri la pagina delle attrezzature Tech Farm">
     <img class="poster"
          src="locandina-tech-farm.png"
-         alt="Tech Farm Sarnico - laboratorio di tecnologia, creatività e futuro per ragazzi">
+         alt="Tech Farm Sarnico">
   </a>
 </body>
 </html>
