@@ -1,97 +1,62 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Tech Farm Sarnico - laboratorio di tecnologia, creatività e futuro per ragazzi." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#061b3a">
   <title>Tech Farm Sarnico</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      background: #061b3a;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      overflow-x: hidden;
+    }
+    a.poster-link {
+      display: block;
+      width: 100vw;
+      max-width: 100%;
+      text-decoration: none;
+      line-height: 0;
+    }
+    img.poster {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      border: 0;
+    }
+    @media (min-width: 900px) {
+      body {
+        background: #061b3a;
+      }
+      a.poster-link {
+        width: auto;
+        max-width: min(100vw, 1024px);
+      }
+      img.poster {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="overlay"></div>
-    <div class="hero-content">
-      <p class="eyebrow">ORATORIO DI SARNICO</p>
-      <h1>TECH FARM SARNICO</h1>
-      <p class="subtitle">Laboratorio di tecnologia, creatività e futuro per ragazzi</p>
-      <a class="cta" href="#attrezzature">Scopri le attrezzature</a>
-    </div>
-  </header>
-
-  <main>
-    <section class="section intro">
-      <div class="container narrow">
-        <h2>Imparare facendo. Creare insieme. Costruire il futuro.</h2>
-        <p>
-          Tech Farm Sarnico è un progetto educativo pensato per avvicinare ragazze e ragazzi alla tecnologia attraverso esperienze concrete: coding, intelligenza artificiale, robotica, elettronica, stampa 3D, video e progettazione digitale.
-        </p>
-        <p>
-          L'obiettivo è creare uno spazio vivo, collaborativo e accessibile, dove la tecnologia diventa uno strumento per sviluppare curiosità, autonomia, creatività e capacità di risolvere problemi.
-        </p>
-      </div>
-    </section>
-
-    <section class="section poster-section">
-      <div class="container">
-        <h2>Il progetto</h2>
-        <div class="image-card">
-          <img src="locandina-tech-farm.png" alt="Locandina Tech Farm Sarnico" />
-        </div>
-      </div>
-    </section>
-
-    <section id="attrezzature" class="section equipment-section">
-      <div class="container">
-        <div class="section-heading-row">
-          <div>
-            <p class="eyebrow dark">PIANO DI AVVIO</p>
-            <h2>Attrezzature necessarie</h2>
-          </div>
-          <div class="budget-box">
-            <span>Obiettivo indicativo</span>
-            <strong>€ 12.200</strong>
-          </div>
-        </div>
-
-        <div class="image-card">
-          <img src="attrezzature-tech-farm.png" alt="Elenco attrezzature Tech Farm Sarnico" />
-        </div>
-
-        <div class="grid">
-          <article class="card"><h3>Digital & AI</h3><p>Notebook, software, coding, AI e progettazione.</p></article>
-          <article class="card"><h3>Robotica & Coding</h3><p>Kit robotici, Arduino, micro:bit, sensori e motori.</p></article>
-          <article class="card"><h3>3D Maker Lab</h3><p>Stampanti 3D, filamenti, CAD e prototipazione.</p></article>
-          <article class="card"><h3>Elettronica</h3><p>Saldatura, multimetri, alimentatori e componentistica.</p></article>
-          <article class="card"><h3>Media Lab</h3><p>Video, audio, fotografia e comunicazione digitale.</p></article>
-          <article class="card"><h3>Future Lab</h3><p>Tecnologie immersive, sperimentazione e nuovi strumenti.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section support-section">
-      <div class="container narrow center">
-        <p class="eyebrow">PARTNER DEL TERRITORIO</p>
-        <h2>Aiutaci a far crescere Tech Farm</h2>
-        <p>
-          Aziende, professionisti e sostenitori possono contribuire con una donazione economica, fornendo attrezzature o materiali, oppure mettendo a disposizione competenze e servizi.
-        </p>
-        <div class="support-grid">
-          <div><strong>Adotta una postazione</strong><span>Finanzia un computer o una dotazione specifica.</span></div>
-          <div><strong>Adotta un'Isola Tech</strong><span>Sostieni un intero laboratorio tematico.</span></div>
-          <div><strong>Dona strumenti o materiali</strong><span>Contribuisci direttamente con attrezzature utili.</span></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-content">
-      <div>
-        <strong>TECH FARM SARNICO</strong>
-        <span>Laboratorio di tecnologia, creatività e futuro per ragazzi</span>
-      </div>
-      <div class="footer-note">Pagina informativa del progetto</div>
-    </div>
-  </footer>
+  <a class="poster-link"
+     href="attrezzature.html"
+     target="_blank"
+     rel="noopener"
+     aria-label="Apri l'elenco attrezzature Tech Farm">
+    <img class="poster"
+         src="locandina-tech-farm.png"
+         alt="Tech Farm Sarnico - laboratorio di tecnologia, creatività e futuro per ragazzi">
+  </a>
 </body>
 </html>

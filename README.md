@@ -1,23 +1,16 @@
 # Tech Farm Sarnico
 
-Mini-sito pubblico del progetto Tech Farm Sarnico.
+Versione 2 del minisito.
 
-## File necessari
+## File da caricare nella root del repository
 - `index.html`
-- `style.css`
+- `attrezzature.html`
 - `locandina-tech-farm.png`
 - `attrezzature-tech-farm.png`
 
-## Pubblicazione con GitHub Pages
-1. Crea un repository pubblico chiamato `tech-farm-sarnico`.
-2. Carica tutti i file nella cartella principale del repository.
-3. Vai in **Settings > Pages**.
-4. In **Build and deployment**, seleziona **Deploy from a branch**.
-5. Seleziona branch **main** e cartella **/(root)**.
-6. Salva.
-7. Dopo l'attivazione, GitHub mostrerà l'indirizzo pubblico del sito.
+Il QR presente nella locandina punta a:
 
-L'URL sarà normalmente:
-`https://NOMEUTENTE.github.io/tech-farm-sarnico/`
+https://andreavignoni82-spec.github.io/tech-farm-sarnico/attrezzature.html
 
-Usa quell'URL per generare il QR definitivo della locandina.
+La home mostra soltanto la locandina a tutta larghezza.
+Toccando/cliccando la locandina si apre `attrezzature.html` in una nuova pagina.
