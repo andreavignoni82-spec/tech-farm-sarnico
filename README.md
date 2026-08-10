@@ -1,18 +1,12 @@
-# Tech Farm Sarnico — Mobile V3
+# Tech Farm Sarnico V5
 
-Aggiornamento:
-- mantiene la pagina attrezzature mobile già esistente;
-- aggiunge in fondo la pagina budget originale fornita dall'utente;
-- la pagina budget viene visualizzata senza modifiche grafiche;
-- ottimizzazione responsive per smartphone verticale;
-- QR e URL invariati.
+Struttura definitiva:
+1. index.html: mostra SOLO la locandina Tech Farm.
+2. attrezzature.html: mostra SOLO l'elenco attrezzature a 9 punti nello stile attuale.
+3. Il QR reale della locandina porta direttamente ad attrezzature.html.
 
-File principali da sostituire/caricare nella root GitHub:
+Sostituire nella root GitHub:
 - index.html
 - attrezzature.html
 - locandina-tech-farm.png
 - attrezzature-tech-farm.png
-- budget-tech-farm.jpg
-
-Il QR continua a puntare a:
-https://andreavignoni82-spec.github.io/tech-farm-sarnico/attrezzature.html
