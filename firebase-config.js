@@ -1,0 +1,1 @@
+export const firebaseConfig={apiKey:"AIzaSyAqnq7a_7p1F2vFp3BsstQPf-twWtx1VVk",authDomain:"techfarm-101d8.firebaseapp.com",databaseURL:"https://techfarm-101d8-default-rtdb.europe-west1.firebasedatabase.app",projectId:"techfarm-101d8",storageBucket:"techfarm-101d8.firebasestorage.app",messagingSenderId:"891731709561",appId:"1:891731709561:web:6c3980da8091b5670fcea8"};
