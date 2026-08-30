@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071d3d">
+<title>Dashboard Idee | Tech Farm Sarnico</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#eef3f6;color:#10213b}.top{background:#071d3d;color:#fff;padding:24px 16px 20px}.wrap{max-width:1180px;margin:auto}.brand{font-size:24px;font-weight:900;letter-spacing:.06em}.brand b{color:#a7cf20}.sub{margin-top:7px;color:#c8d7e8}.main{padding:16px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:14px}.stat{background:#fff;border-radius:16px;padding:16px;box-shadow:0 4px 18px rgba(7,29,61,.06)}.stat .n{font-size:30px;font-weight:900}.stat .l{font-size:13px;color:#6b7785;margin-top:3px}.filters{background:#fff;border-radius:16px;padding:14px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:10px;margin-bottom:14px;box-shadow:0 4px 18px rgba(7,29,61,.06)}input,select,button{font:inherit;border-radius:11px;border:1px solid #ccd7de;background:#fff;padding:11px 12px}button{border:0;background:#071d3d;color:white;font-weight:800;cursor:pointer}.cards{display:grid;gap:12px}.card{background:#fff;border-radius:18px;padding:17px;box-shadow:0 4px 18px rgba(7,29,61,.06)}.row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.meta{font-size:13px;color:#71808f}.idea{font-size:17px;line-height:1.5;margin:12px 0 14px;white-space:pre-wrap}.chips{display:flex;gap:7px;flex-wrap:wrap}.chip{background:#edf3f6;border-radius:999px;padding:6px 9px;font-size:12px;font-weight:800}.chip.ai{background:#e5f1ff}.chip.robotica{background:#e8f7ea}.chip.d3{background:#fff0dd}.chip.video{background:#f5e8ff}.chip.vr{background:#e6f8ff}.chip.green{background:#edf7d8}.empty,.error{text-align:center;padding:35px;background:#fff;border-radius:16px;color:#607080}.toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.count{font-weight:800}.small{font-size:12px;color:#71808f}@media(max-width:850px){.stats{grid-template-columns:repeat(2,1fr)}.filters{grid-template-columns:1fr 1fr}.filters .full{grid-column:1/-1}}@media(max-width:520px){.stats{grid-template-columns:1fr 1fr}.stat .n{font-size:25px}.filters{grid-template-columns:1fr}.row{display:block}.meta{margin-top:6px}.main{padding:11px}.top{padding:20px 14px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="brand">TECH <b>FARM</b> SARNICO</div><div class="sub">Dashboard idee ricevute</div></div></header>
+<main class="main"><div class="wrap">
+<section class="stats" id="stats"></section>
+<section class="filters">
+<input id="q" class="full" placeholder="Cerca nel testo, comune o interesse…">
+<select id="fInteresse"><option value="">Tutti gli ambiti</option><option value="ai">AI & Coding</option><option value="robotica">Robotica & Elettronica</option><option value="3d">3D & Maker</option><option value="video">Video & Digital</option><option value="vr">VR & Nuove Tecnologie</option><option value="green">Sostenibilità & Green</option><option value="altro">Altra idea</option></select>
+<select id="fEta"><option value="">Tutte le età</option><option value="10-12">10-12</option><option value="13-14">13-14</option><option value="15-16">15-16</option><option value="altra">Altra fascia</option></select>
+<select id="fCampagna"><option value="">Tutte le provenienze</option><option value="diretto">Accesso diretto</option><option value="ai">AI</option><option value="robotica">Robotica</option><option value="3d">3D</option><option value="video">Video</option><option value="vr">VR</option><option value="green">Green</option></select>
+<button id="reset">Azzera filtri</button>
+</section>
+<div class="toolbar"><div class="count" id="count">Caricamento…</div><div class="small">Aggiornamento in tempo reale</div></div>
+<section class="cards" id="cards"><div class="empty">Caricamento delle idee…</div></section>
+</div></main>
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+import{getDatabase,ref,onValue}from"https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
+import{firebaseConfig}from"./firebase-config.js";
+const db=getDatabase(initializeApp(firebaseConfig));
+const labels={ai:"AI & Coding",robotica:"Robotica & Elettronica","3d":"3D & Maker",video:"Video & Digital",vr:"VR & Nuove Tecnologie",green:"Sostenibilità & Green",altro:"Altra idea"};
+const modi={"mia-idea":"Sviluppare una mia idea",gruppo:"Progetto con altri",entrambi:"Entrambe le cose"};
+let all=[];
+const $=id=>document.getElementById(id),cards=$("cards"),stats=$("stats"),count=$("count"),q=$("q"),fi=$("fInteresse"),fe=$("fEta"),fc=$("fCampagna");
+const esc=s=>String(s??"").replace(/[&<>\"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'\"':"&quot;","'":"&#039;"}[m]));
+function fmt(ts){if(!ts)return"Data non disponibile";try{return new Intl.DateTimeFormat("it-IT",{dateStyle:"medium",timeStyle:"short"}).format(new Date(ts))}catch{return"Data non disponibile"}}
+function renderStats(rows){const c=k=>rows.filter(x=>(x.interessi||[]).includes(k)).length;const data=[[rows.length,"Idee totali"],[c("ai"),"AI & Coding"],[c("robotica"),"Robotica"],[c("3d"),"3D & Maker"],[c("video"),"Video & Digital"],[c("vr"),"VR"],[c("green"),"Green"],[new Set(rows.map(x=>x.zona).filter(Boolean)).size,"Comuni / zone"]];stats.innerHTML=data.map(x=>`<div class="stat"><div class="n">${x[0]}</div><div class="l">${x[1]}</div></div>`).join("")}
+function filtered(){const txt=q.value.trim().toLowerCase(),i=fi.value,e=fe.value,c=fc.value;return all.filter(x=>{const ints=x.interessi||[];const blob=[x.idea,x.zona,x.fasciaEta,x.campagna,...ints.map(v=>labels[v]||v)].join(" ").toLowerCase();return(!txt||blob.includes(txt))&&(!i||ints.includes(i))&&(!e||x.fasciaEta===e)&&(!c||x.campagna===c)})}
+function render(){const rows=filtered();renderStats(rows);count.textContent=`${rows.length} ${rows.length===1?"idea visualizzata":"idee visualizzate"}`;if(!rows.length){cards.innerHTML='<div class="empty">Nessuna idea corrisponde ai filtri selezionati.</div>';return}cards.innerHTML=rows.map((x,idx)=>{const chips=(x.interessi||[]).map(v=>`<span class="chip ${v==='3d'?'d3':v}">${esc(labels[v]||v)}</span>`).join("");return `<article class="card"><div class="row"><div><strong>Idea #${all.length-idx}</strong><div class="meta">Età: ${esc(x.fasciaEta||"—")} · Zona: ${esc(x.zona||"non indicata")} · Modalità: ${esc(modi[x.modo]||x.modo||"—")}</div></div><div class="meta">${fmt(x.creatoIl)}<br>Provenienza: ${esc(x.campagna||"diretto")}</div></div><div class="idea">${esc(x.idea||"")}</div><div class="chips">${chips}</div></article>`}).join("")}
+[q,fi,fe,fc].forEach(el=>el.addEventListener("input",render));$("reset").addEventListener("click",()=>{q.value="";fi.value="";fe.value="";fc.value="";render()});
+onValue(ref(db,"idee"),snap=>{const v=snap.val()||{};all=Object.entries(v).map(([id,x])=>({id,...x})).sort((a,b)=>(b.creatoIl||0)-(a.creatoIl||0));render()},err=>{console.error(err);stats.innerHTML="";count.textContent="Impossibile leggere i dati";cards.innerHTML='<div class="error"><strong>La dashboard è pubblicata, ma Firebase non consente ancora la lettura dei dati.</strong><br><br>Occorre abilitare temporaneamente la lettura del nodo <code>idee</code> nelle regole Realtime Database.</div>'});
+</script>
+</body>
+</html>
